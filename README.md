@@ -16,7 +16,7 @@ function RM-Link{
 	[switch]$Verbose
 	)
 	
-	$workdir = "C:\Users\system2.pm\Documents\RM"
+	$workdir = "C:\Users\{username}\Documents\workdir"
 	
 	Write-Output "Running RM macro v0.1... by JH"
 	cd $workdir
@@ -60,8 +60,8 @@ function RM-Link{
 	$fieldName = "Source Trace"
 	$server = "10.110.x.x"
 	$port = "7001"
-	$project = "/All_Customer_Requirements_Management/FORD/project.pj"
-	$fileName = "Associated Test Methods_Evaluation Methods/[SYS1]_CRS_" + $fileName
+	$project = "/project_name/subname/project.pj"
+	$fileName = "foldername/[SYS1]_CRS_" + $fileName
 
 
 
@@ -109,6 +109,8 @@ ex) im editissue --addAttachment="field=Attachments,path=$absolutePath" $documen
 ```
 
 #### editissue -addSourceTrace
+- FieldName is the name of the method you are trying to achieve, such as source trace, can check through the history since it might not show on the gui.
+- Filename could include the sub_folders within the project, the project is the path from the sandbox, in the format of projectname/subname/project.pj
 ```
 $fieldName = "Source Trace"
 $server = "10.110.x.x"
@@ -122,14 +124,10 @@ $fileName = "$folder_name/$header" + $fileName
 im editissue --addSourceTrace="field=$fieldName,server=$server,port=$port,file=$fileName,project=$project" $targetId
 ```
 
-
-
-
-```
-
 ### extractissue
 ```
 # extracts all attachments from the source document, and downloads it to the current working directory
 im extractattachments --issue=$sourceId
-
 ```
+
+Link to docs: https://support.ptc.com/help/windchillrvs/r12.3.0.0/en/index.html#page/IntegrityHelp%2Fim_editissue.html%23
